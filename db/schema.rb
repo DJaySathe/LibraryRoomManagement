@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160918152357) do
     t.string   "usertype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
   end
 
 end
