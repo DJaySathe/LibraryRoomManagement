@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+.header {
+    background-color: coral;
+    display: inline-flex;
+    font-size: 30px;
+    font-family: Segoi UI;
+    padding: 15px 0px 2px 0px;
+    border-bottom: grey solid 3px;
+    position: relative;
+    overflow: visible;
+}
+.Footer{
+    background-color: coral;
+    display: inline-flex;
+    font-size: 15px;
+    font-family: Segoi UI;
+    padding: 2px 0px 2px 0px;
+    border-top: grey solid 3px;
+}
+
+#logout{
+    background-repeat: no-repeat;
+    background-image: url('./logout.png');
+    height: 37px;
+    width: 37px;
+    background-color: transparent;
+    border: none;
+}
+.gr__localhost
+{
+    height : 100% !important;
+}
