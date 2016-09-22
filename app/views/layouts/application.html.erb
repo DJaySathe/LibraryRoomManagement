@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LibraryRoomManagement</title>
+    <title>Mahesh Masale</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="Header" class="header" style="height: 40px; width: 100%;">
+      <div style="margin-left: 20px;">Library Management System</div>
+        <div style="right: -77%; position: relative;">
+          <button id="logout" onclick="myFunction()" class="logout"> </button>
+        </div>
+    </div>
+    <div style="margin-left: 20px; height: 87%">
+      <%= yield %>
+    </div>
+
+    <div id="Footer" class="Footer" style="height: 20px; width: 100%;">
+      <div style="margin-left: 20px;"> This application is created by Mahesh, Dhananjay and Pranav.</div>
+    </div>
   </body>
 </html>
