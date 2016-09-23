@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  protect_from_forgery except: :index
   # GET /users
   # GET /users.json
   def index
@@ -54,11 +54,20 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+
+
+    puts(@user.usertype)
+    if @user.usertype != 'admin'
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      format.html { redirect_to users_url, notice: 'Can not delete preconfigured admit.' }
       format.json { head :no_content }
     end
+
   end
 
   private
