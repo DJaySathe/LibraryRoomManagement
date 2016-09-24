@@ -1,28 +1,10 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
-  before_action :set_search_rooms, only: [:search, :opensearch]
+
   # GET /rooms
   # GET /rooms.json
   def index
     @rooms = Room.all
-  end
-
-  def opensearch
-
-  end
-
-  def search
-    #update a variable 'searchedRooms'
-    @searchedRooms = Room._by_sql("SELECT * FROM rooms")
-    respond_to do |format|
-      format.html {redirect_to opensearch_path, notice: 'Room was successfully Searched.'}
-    end
-
-    #format.json { render :show, status: :created, location: @room }
-  end
-
-  def book
-
   end
 
   # GET /rooms/1
@@ -83,10 +65,6 @@ class RoomsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_room
       @room = Room.find(params[:id])
-    end
-
-    def set_search_rooms
-      @searchedRooms = Room.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

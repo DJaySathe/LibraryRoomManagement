@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find_by(params[:id])
   end
 
   # GET /users/new
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to '/sessions/new', notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -56,8 +57,8 @@ class UsersController < ApplicationController
   def destroy
 
 
-    puts(@user.usertype)
-    if @user.usertype != 'admin'
+    puts(@user.role)
+    if @user.role != 'admin'
       @user.destroy
       respond_to do |format|
         format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
@@ -78,6 +79,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :emailid, :usertype)
+      params.require(:user).permit(:name, :email, :role, :password)
     end
 end

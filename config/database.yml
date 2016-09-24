@@ -4,6 +4,8 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
+#set SQLite to wait and retry for up to 100ms if database locked
+
 default: &default
   adapter: sqlite3
   pool: 5
