@@ -41,7 +41,7 @@
 </div>
 
 
-<table>
+  <table>
 
     <thead>
     <tr>
@@ -52,7 +52,13 @@
       <th colspan="3">Operations</th>
     </tr>
     </thead>
+  </table>
 
+  <p><%=@searchedRooms.inspect%></p>
+
+    <% if @searchedRooms != nil %>
+    <p>Inside</p>
+    <table>
     <tbody>
       <% @searchedRooms.each do |searchedRoom| %>
           <tr>
@@ -65,5 +71,5 @@
           </tr>
       <% end %>
     </tbody>
-
-</table>
+    </table>
+    <% end %>
