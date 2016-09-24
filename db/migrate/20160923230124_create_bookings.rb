@@ -8,7 +8,6 @@ class CreateBookings < ActiveRecord::Migration[5.0]
       t.string :time
       t.string :bookedby
       t.integer :status
-
       t.timestamps
     end
   end
