@@ -7,6 +7,14 @@ class RoomsController < ApplicationController
     @rooms = Room.all
   end
 
+  def opensearch
+
+  end
+
+  def search
+    #update a variable 'searchedRooms'
+  end
+
   # GET /rooms/1
   # GET /rooms/1.json
   def show
