@@ -17,18 +17,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :status %>
-    <%= f.check_box :status %>
-  </div>
-
-  <div class="field">
     <%= f.label :size %>
-    <%= f.number_field :size %>
+    <%= f.select :size, [[4,4],[8,8],[12,12]] %>
+
   </div>
 
   <div class="field">
     <%= f.label :building %>
-    <%= f.text_field :building %>
+    <%= f.select :building, [['James B. Hunt','James B. Hunt'],['D. H. Hill','D. H. Hill']] %>
   </div>
 
   <div class="actions">
