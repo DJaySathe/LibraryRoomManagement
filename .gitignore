@@ -19,4 +19,12 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-.idea/
+
+/.idea
+vendor/bundle/ruby/2.3.0/build_info/
+vendor/bundle/ruby/2.3.0/doc/
+vendor/bundle/ruby/2.3.0/extensions/
+vendor/bundler/ruby/2.2.0/
+vendor/bundler/ruby/2.3.0/build_info/
+vendor/bundler/ruby/2.3.0/doc/
+vendor/bundler/ruby/2.3.0/extensions/
