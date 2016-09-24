@@ -41,7 +41,7 @@
 </div>
 
 
-<table>
+  <table>
 
     <thead>
     <tr>
@@ -52,18 +52,24 @@
       <th colspan="3">Operations</th>
     </tr>
     </thead>
+  </table>
 
-    <tbody>
-      <% @searchedRooms.each do |searchedRoom| %>
-          <tr>
-            <td><%= searchedRoom.roomid %></td>
-            <td><%= searchedRoom.building %></td>
-            <td><%= searchedRoom.size %></td>
+  <p><%=@searchedRooms.inspect%></p>
 
-             <td><%= link_to 'Book', book_room_path(searchedRoom) %></td>
+    <% if @searchedRooms != nil %>
+	    <p>Inside</p>
+	    <table>
+	    <tbody>
+	      <% @searchedRooms.each do |searchedRoom| %>
+	          <tr>
+	            <td><%= searchedRoom.roomid %></td>
+	            <td><%= searchedRoom.building %></td>
+	            <td><%= searchedRoom.size %></td>
 
-          </tr>
-      <% end %>
-    </tbody>
+	             <td><%= link_to 'Book', book_room_path(searchedRoom) %></td>
 
-</table>
+	          </tr>
+	      <% end %>
+	    </tbody>
+	    </table>
+    <% end %>

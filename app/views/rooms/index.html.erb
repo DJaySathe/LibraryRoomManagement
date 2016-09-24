@@ -5,11 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Roomid</th>
-      <th>Status</th>
-      <th>Size</th>
+      <th>Room Number</th>
+      <th>Room Size</th>
       <th>Building</th>
-      <th colspan="3"></th>
+      <th colspan="3">Operations</th>
     </tr>
   </thead>
 
@@ -17,7 +16,6 @@
     <% @rooms.each do |room| %>
       <tr>
         <td><%= room.roomid %></td>
-        <td><%= room.status %></td>
         <td><%= room.size %></td>
         <td><%= room.building %></td>
         <td><%= link_to 'Show', room %></td>

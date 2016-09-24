@@ -7,14 +7,13 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
   end
 
+
+  def new
+    @booking = Booking.new
+  end
   # GET /bookings/1
   # GET /bookings/1.json
   def show
-  end
-
-  # GET /bookings/new
-  def new
-    @booking = Booking.new
   end
 
   # GET /bookings/1/edit
