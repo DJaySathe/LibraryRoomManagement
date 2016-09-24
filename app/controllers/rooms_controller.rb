@@ -8,7 +8,6 @@ class RoomsController < ApplicationController
   end
 
   def opensearch
-
   end
 
   def search
