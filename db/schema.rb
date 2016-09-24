@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923234512) do
+ActiveRecord::Schema.define(version: 20160924033133) do
 
   create_table "bookings", force: :cascade do |t|
     t.string   "bookingid"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160923234512) do
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "roomid"
+    t.boolean  "status"
     t.integer  "size"
     t.string   "building"
     t.datetime "created_at", null: false
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160923234512) do
     t.datetime "updated_at",      null: false
     t.string   "password"
     t.boolean  "ispreconfigured"
+    t.string   "password_digest"
   end
 
 end

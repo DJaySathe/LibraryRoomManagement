@@ -12,9 +12,15 @@
 
 
 <p>
-  <strong>Usertype:</strong>
+  <strong>Role:</strong>
   <%= @user.role %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @user.password %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+<%= link_to "Log out", logout_path(@user) %>
