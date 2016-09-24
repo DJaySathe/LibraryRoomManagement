@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20160924033133) do
 
   create_table "rooms", force: :cascade do |t|
     t.integer  "roomid"
-    t.boolean  "status"
     t.integer  "size"
     t.string   "building"
     t.datetime "created_at", null: false
