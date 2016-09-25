@@ -5,39 +5,38 @@
 <h1>Search Rooms</h1>
 
 <div>
+  <%= form_tag(search_rooms_path, :method => "get", id: "search-form") do %>
+    <div class="field">
+      <%= label_tag :status %>
+      <%= select_tag :status, options_for_select(['Any','Available','Booked']) %>
+    </div>
 
-  <div class="field">
-    <%= label_tag :status %>
-    <%= select_tag :status, options_for_select(['Any','Available','Booked']) %>
-  </div>
+    <div class="field">
+      <%= label_tag :Room %>
+      <%= text_field_tag :Room  %>
+    </div>
 
-  <div class="field">
-    <%= label_tag :Room %>
-    <%= text_field_tag :Room  %>
-  </div>
+    <div class="field">
+      <%= label_tag :building %>
+      <%= select_tag :building, options_for_select(['Any','James B. Hunt','D. H. Hill']) %>
+    </div>
 
-  <div class="field">
-    <%= label_tag :building %>
-    <%= select_tag :building, options_for_select(['Any','James B. Hunt','D. H. Hill']) %>
-  </div>
+    <div class="field">
+      <%= label_tag :size %>
+      <%= select_tag :size, options_for_select(['Any',4,8,12]) %>
+    </div>
 
-  <div class="field">
-    <%= label_tag :size %>
-    <%= select_tag :size, options_for_select(['Any',4,8,12]) %>
-  </div>
+    <div class="field">
+      <%= label_tag :date %>
+      <%= date_field_tag :date %>
+    </div>
 
-  <div class="field">
-    <%= label_tag :date %>
-    <%= date_field_tag :date %>
-  </div>
-
-  <div class="field">
-    <%= label_tag :time %>
-    <%= select_tag :time, options_for_select(["12 AM - 2 AM", "2 AM - 4 AM", "4 AM - 6 AM", "6 AM - 8 AM","8 AM - 10 AM", "10 AM - 12 PM", "12 PM - 2 PM", "2 PM - 4 PM", "4 PM - 6 PM", "6 PM - 8 PM", "8 PM - 10 PM", "10 PM - 12 AM"]) %>
-  </div>
-
-  <%= link_to 'Search Rooms', search_rooms_path %>
-
+    <div class="field">
+      <%= label_tag :time %>
+      <%= select_tag :time, options_for_select(["12 AM - 2 AM", "2 AM - 4 AM", "4 AM - 6 AM", "6 AM - 8 AM","8 AM - 10 AM", "10 AM - 12 PM", "12 PM - 2 PM", "2 PM - 4 PM", "4 PM - 6 PM", "6 PM - 8 PM", "8 PM - 10 PM", "10 PM - 12 AM"]) %>
+    </div>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
 </div>
 
 
@@ -54,10 +53,7 @@
     </thead>
   </table>
 
-  <p><%=@searchedRooms.inspect%></p>
-
     <% if @searchedRooms != nil %>
-	    <p>Inside</p>
 	    <table>
 	    <tbody>
 	      <% @searchedRooms.each do |searchedRoom| %>

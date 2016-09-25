@@ -13,13 +13,13 @@ class RoomsController < ApplicationController
   def search
     #update a variable 'searchedRooms'
     @searchedRooms = Room.all
-    render :text => @searchedRooms
+    #Rails.logger.debug("My object: #{@searchedRooms.inspect}")
+    #render :text => $searchedRooms
     #@searchedRooms = Room.connection.select_all("SELECT * FROM rooms where roomid =1121")
-    #respond_to do |format|
-      #format.html {redirect_to opensearch_path, notice: 'Room was successfully Searched.'}
-      #format.json { render :show, location: @searchedRooms }
-    #end
-
+    respond_to do |format|
+      format.html {redirect_to opensearch_path, notice: 'Room was successfully Searched.'}
+      format.json { render :show, location: @searchedRooms }
+    end
     #format.json { render :show, status: :created, location: @room }
   end
 
@@ -88,7 +88,7 @@ class RoomsController < ApplicationController
     end
 
     def set_search_rooms
-      #@searchedRooms = Room.all
+      #$searchedRooms = Room.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
