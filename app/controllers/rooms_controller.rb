@@ -15,6 +15,7 @@ class RoomsController < ApplicationController
     #@searchedRooms = Roomwhere(roomid: '1222')
 
 
+
     #time slot will never be null, Thus making this as compulsory field.
     str_query_bookings=""
     str_query_bookings= " where time = \'"+params[:time] +"\' "
@@ -30,8 +31,16 @@ class RoomsController < ApplicationController
     @bookings.each do |searchedRoom|	arr << searchedRoom['roomid'] end
     if arr.length > 0
       arrStr = arr.join(',')
-      str_query = " where roomid NOT IN (" + arrStr + ")  "
+      if params[:status] == 'Any'
+        str_query = ""
+      elsif params[:status] == 1
+        str_query = " where roomid IN (" + arrStr + ")  "
+      else
+        str_query = " where roomid NOT IN (" + arrStr + ")  "
+      end
+
     end
+
 
     if params[:roomid] != ""
       str_query = " where roomid = " + params[:roomid] + "  "
@@ -46,15 +55,27 @@ class RoomsController < ApplicationController
         end
       end
     else
-
-      if params[:building] != "Any"
-        str_query = " AND building = \'" + params[:building] + "\' "
-        if params[:size] != "Any"
-          str_query = str_query + "AND size = " + params[:size] + " "
+      if str_query == ""
+        if params[:building] != "Any"
+          str_query = " where building = \'" + params[:building] + "\' "
+          if params[:size] != "Any"
+            str_query = str_query + "AND size = " + params[:size] + " "
+          end
+        else
+          if params[:size] != "Any"
+            str_query = " where size = " + params[:size] + " "
+          end
         end
       else
-        if params[:size] != "Any"
-          str_query = " AND size = " + params[:size] + " "
+        if params[:building] != "Any"
+          str_query = str_query +" AND building = \'" + params[:building] + "\' "
+          if params[:size] != "Any"
+            str_query = str_query + "AND size = " + params[:size] + " "
+          end
+        else
+          if params[:size] != "Any"
+            str_query = " AND size = " + params[:size] + " "
+          end
         end
       end
     end
