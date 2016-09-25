@@ -1,0 +1,35 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<h1>List of Rooms</h1>
+
+<table>
+
+  <thead>
+  <tr>
+    <th>Room</th>
+    <th>Building</th>
+    <th>size</th>
+    <th>status</th>
+    <th colspan="3">Operations</th>
+  </tr>
+  </thead>
+</table>
+
+<% if @searchedRooms != nil %>
+    <table>
+      <tbody>
+      <% @searchedRooms.each do |searchedRoom| %>
+          <tr>
+            <td><%= searchedRoom['roomid'] %></td>
+            <td><%= searchedRoom['building'] %></td>
+            <td><%= searchedRoom['size'] %></td>
+
+            <td><%= link_to 'Book', book_room_path(searchedRoom) %></td>
+
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>

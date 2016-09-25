@@ -12,15 +12,62 @@ class RoomsController < ApplicationController
 
   def search
     #update a variable 'searchedRooms'
-    @searchedRooms = Room.all
-    render :text => @searchedRooms
-    #@searchedRooms = Room.connection.select_all("SELECT * FROM rooms where roomid =1121")
-    #respond_to do |format|
-      #format.html {redirect_to opensearch_path, notice: 'Room was successfully Searched.'}
-      #format.json { render :show, location: @searchedRooms }
-    #end
+    #@searchedRooms = Roomwhere(roomid: '1222')
 
-    #format.json { render :show, status: :created, location: @room }
+
+    #time slot will never be null, Thus making this as compulsory field.
+    str_query_bookings=""
+    str_query_bookings= " where time = \'"+params[:time] +"\' "
+
+    if params[:date] != ""
+      str_query_bookings = str_query_bookings + " AND date = \'" + params[:date] +"\' "
+    end
+
+    @bookings = Booking.connection.select_all("SELECT roomid FROM bookings " + str_query_bookings )
+
+    str_query = ""
+    arr = Array.new
+    @bookings.each do |searchedRoom|	arr << searchedRoom['roomid'] end
+    if arr.length > 0
+      arrStr = arr.join(',')
+      str_query = " where roomid NOT IN (" + arrStr + ")  "
+    end
+
+    if params[:roomid] != ""
+      str_query = " where roomid = " + params[:roomid] + "  "
+      if params[:building] != "Any"
+        str_query = str_query + " AND building = \'" + params[:building] + "\' "
+        if params[:size] != "Any"
+          str_query = str_query + "AND size = " + params[:size] + " "
+        end
+      else
+        if params[:size] != "Any"
+          str_query = str_query + "AND size = " + params[:size] + " "
+        end
+      end
+    else
+
+      if params[:building] != "Any"
+        str_query = " AND building = \'" + params[:building] + "\' "
+        if params[:size] != "Any"
+          str_query = str_query + "AND size = " + params[:size] + " "
+        end
+      else
+        if params[:size] != "Any"
+          str_query = " AND size = " + params[:size] + " "
+        end
+      end
+    end
+
+
+    @searchedRooms = Room.connection.select_all("SELECT * FROM rooms " + str_query )
+
+    #render :text => @bookings.to_yaml
+
+    respond_to do |format|
+      format.html { render '/rooms/searched_rooms', notice: 'Room was successfully destroyed.' }
+      format.json { render json: @searchedRooms }
+    end
   end
 
   def book
