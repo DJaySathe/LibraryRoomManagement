@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get    '/signup',  to: 'users#new'
 
-  get '/user/show',  to: 'users#show'  
+  get '/user/show',  to: 'users#show'
 
   resources :users
   get 'opensearch' => 'rooms#opensearch', :as => :opensearch
