@@ -25,9 +25,10 @@
             <td><%= searchedRoom['roomid'] %></td>
             <td><%= searchedRoom['building'] %></td>
             <td><%= searchedRoom['size'] %></td>
-
-            <td><%= link_to 'Book', book_room_path(searchedRoom) %></td>
-
+            <td><%= searchedRoom['status'] %></td>
+            <% if searchedRoom['status'] == 'Available' %>
+                <td><%= link_to 'Book', book_room_path(searchedRoom) %></td>
+            <% end %>
           </tr>
       <% end %>
       </tbody>

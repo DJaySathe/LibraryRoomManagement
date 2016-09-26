@@ -24,70 +24,31 @@ class RoomsController < ApplicationController
       str_query_bookings = str_query_bookings + " AND date = \'" + params[:date] +"\' "
     end
 
-    @bookings = Booking.connection.select_all("SELECT roomid FROM bookings " + str_query_bookings )
-
-    str_query = ""
-    arr = Array.new
-    @bookings.each do |searchedRoom|	arr << searchedRoom['roomid'] end
-    if arr.length > 0
-      arrStr = arr.join(',')
-      if params[:status] == 'Any'
-        str_query = ""
-      elsif params[:status] == 1
-        str_query = " where roomid IN (" + arrStr + ")  "
-      else
-        str_query = " where roomid NOT IN (" + arrStr + ")  "
-      end
-
+    statusQuery=""
+    if params[:status] == "Booked"
+      statusQuery=" AND m.status=2"
+    elsif params[:status] == "Available"
+      statusQuery=" AND bookings.status=0"
     end
 
-
-    if params[:roomid] != ""
-      str_query = " where roomid = " + params[:roomid] + "  "
-      if params[:building] != "Any"
-        str_query = str_query + " AND building = \'" + params[:building] + "\' "
-        if params[:size] != "Any"
-          str_query = str_query + "AND size = " + params[:size] + " "
-        end
-      else
-        if params[:size] != "Any"
-          str_query = str_query + "AND size = " + params[:size] + " "
-        end
-      end
-    else
-      if str_query == ""
-        if params[:building] != "Any"
-          str_query = " where building = \'" + params[:building] + "\' "
-          if params[:size] != "Any"
-            str_query = str_query + "AND size = " + params[:size] + " "
-          end
-        else
-          if params[:size] != "Any"
-            str_query = " where size = " + params[:size] + " "
-          end
-        end
-      else
-        if params[:building] != "Any"
-          str_query = str_query +" AND building = \'" + params[:building] + "\' "
-          if params[:size] != "Any"
-            str_query = str_query + "AND size = " + params[:size] + " "
-          end
-        else
-          if params[:size] != "Any"
-            str_query = " AND size = " + params[:size] + " "
-          end
-        end
-      end
+    dateQuery=""
+    if params[:date] != ""
+      dateQuery=" AND bookings.date="+ params[:date]
+    end
+    timeQuery=""
+    if params[:time] != NIL
+      timeQuery=" AND bookings.time= \'"+ params[:time]+"\'"
     end
 
-
-    @searchedRooms = Room.connection.select_all("SELECT * FROM rooms " + str_query )
-
-    #render :text => @bookings.to_yaml
-
+    nilString = ""
+    string_sql = ""
+    #string_sql = "select m.roomid, m.status, m.building,m.size from (SELECT rooms.roomid as roomid, bookings.status as status,bookings.time as time,bookings.date as date, rooms.building as building, rooms.size as size FROM rooms LEFT JOIN bookings ON rooms.roomid=bookings.roomid where  bookings.time= '"+params[:time]+"' "+statusQuery + dateQuery +") as m where m.building like '%"+ if params[:building] != 'Any' then params[:building] else nilString end +"%'"
+    @bookings = Booking.connection.select_all("select m.roomid, m.status, m.building,m.size from (SELECT rooms.roomid as roomid, bookings.status as status,bookings.time as time,bookings.date as date, rooms.building as building, rooms.size as size FROM rooms LEFT JOIN bookings ON rooms.roomid=bookings.roomid) as m where m.building like '%"+ if params[:building] != 'Any' then params[:building] else nilString end +"%'"+statusQuery + dateQuery+timeQuery)
+    #@bookings = Booking.connection.select_all(string_sql)
+    #render :text => @bookings.to_json
     respond_to do |format|
       format.html { render '/rooms/searched_rooms', notice: 'Room was successfully destroyed.' }
-      format.json { render json: @searchedRooms }
+      format.json { render json: @bookings }
     end
   end
 
