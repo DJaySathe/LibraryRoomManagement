@@ -1,19 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  bookingid: MyString
-  userid: MyString
-  roomid: 1
-  date: 2016-09-23
-  time: MyString
-  bookedby: MyString
-  status: 1
+  date: 2016-09-27
+  start_time: 2016-09-27 19:14:24
 
 two:
-  bookingid: MyString
-  userid: MyString
-  roomid: 1
-  date: 2016-09-23
-  time: MyString
-  bookedby: MyString
-  status: 1
+  date: 2016-09-27
+  start_time: 2016-09-27 19:14:24

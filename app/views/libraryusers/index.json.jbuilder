@@ -1,0 +1,1 @@
+json.array! @libraryusers, partial: 'libraryusers/libraryuser', as: :libraryuser

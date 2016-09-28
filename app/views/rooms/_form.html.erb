@@ -18,13 +18,12 @@
 
   <div class="field">
     <%= f.label :size %>
-    <%= f.select :size, [[4,4],[8,8],[12,12]] %>
-
+    <%= f.number_field :size %>
   </div>
 
   <div class="field">
     <%= f.label :building %>
-    <%= f.select :building, [['James B. Hunt','James B. Hunt'],['D. H. Hill','D. H. Hill']] %>
+    <%= f.text_field :building %>
   </div>
 
   <div class="actions">

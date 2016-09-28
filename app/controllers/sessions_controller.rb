@@ -3,10 +3,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      # Log the user in and redirect to the user's show page.
-      log_in user
+  	libraryuser = Libraryuser.find_by(email: params[:session][:email].downcase)
+    if libraryuser && libraryuser.authenticate(params[:session][:password])
+      # Log the libraryuser in and redirect to the libraryuser's show page.
+	  redirect_to
+      log_in libraryuser
       
     else
       flash.now[:notice] = 'Invalid email/password combination'

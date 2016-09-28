@@ -1,0 +1,1 @@
+json.partial! "libraryusers/libraryuser", libraryuser: @libraryuser

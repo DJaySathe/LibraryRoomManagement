@@ -10,18 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924033133) do
+ActiveRecord::Schema.define(version: 20160927231424) do
+
+  create_table "admins", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.boolean  "ispreconfigured"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "bookings", force: :cascade do |t|
-    t.string   "bookingid"
-    t.string   "userid"
-    t.integer  "roomid"
     t.date     "date"
-    t.string   "time"
-    t.string   "bookedby"
-    t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "start_time"
+    t.integer  "libraryuser_id"
+    t.integer  "room_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["libraryuser_id"], name: "index_bookings_on_libraryuser_id"
+    t.index ["room_id"], name: "index_bookings_on_room_id"
+  end
+
+  create_table "libraryusers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -30,17 +46,6 @@ ActiveRecord::Schema.define(version: 20160924033133) do
     t.string   "building"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "role"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "password"
-    t.boolean  "ispreconfigured"
-    t.string   "password_digest"
   end
 
 end

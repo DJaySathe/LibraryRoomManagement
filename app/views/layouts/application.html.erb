@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%=yield(:title) %></title>
+    <title>Libraryroom</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,20 +9,6 @@
   </head>
 
   <body>
-    <div id="Header" class="header" style="height: 40px; width: 100%;">
-      <div style="margin-left: 20px;">Library Management System</div>
-      <div style="right: -65%;position: relative;display: inline-flex;font-size: 20px;">
-        <div id="username" style="margin: 5px 5px 0px 0px;">User Name</div><div style="margin: 3px 0px 0px 0px;">||</div>
-        <div id="userrole" style="margin: 5px 9px 0px 5px;">User Role</div>
-        <button id="logout" onclick="myFunction()" class="logout"> </button>
-      </div>
-    </div>
-    <div style="margin-left: 20px; height: 87%">
-      <%= yield %>
-    </div>
-
-    <div id="Footer" class="Footer" style="height: 20px; width: 100%;">
-      <div style="margin-left: 20px;"> This application is created by Mahesh, Dhananjay and Pranav.</div>
-    </div>
+    <%= yield %>
   </body>
 </html>

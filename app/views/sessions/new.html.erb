@@ -9,10 +9,11 @@
       <%= f.email_field :email, class: 'form-control' %>
 
       <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.password_field :password_digest, class: 'form-control' %>
 
       <%= f.submit "Log in", class: "btn btn-primary" %>
-      <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+	  <%= flash[:notice] if flash[:notice]%>
+      <p>New user? <%= link_to "Sign up now!", new_libraryuser_path %></p>
     <% end %>
 
   </div>

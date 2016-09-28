@@ -5,13 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Bookingid</th>
-      <th>Userid</th>
-      <th>Roomid</th>
       <th>Date</th>
-      <th>Time</th>
-      <th>Bookedby</th>
-      <th>Status</th>
+      <th>Start time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,13 +14,8 @@
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= booking.bookingid %></td>
-        <td><%= booking.userid %></td>
-        <td><%= booking.roomid %></td>
         <td><%= booking.date %></td>
-        <td><%= booking.time %></td>
-        <td><%= booking.bookedby %></td>
-        <td><%= booking.status %></td>
+        <td><%= booking.start_time %></td>
         <td><%= link_to 'Show', booking %></td>
         <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
         <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>

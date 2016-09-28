@@ -2,12 +2,10 @@
 
 one:
   roomid: 1
-  status: false
   size: 1
   building: MyString
 
 two:
   roomid: 1
-  status: false
   size: 1
   building: MyString
