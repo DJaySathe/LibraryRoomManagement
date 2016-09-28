@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   def new
   end
+  def login_admin
 
+  end
   def create
   	libraryuser = Libraryuser.find_by(email: params[:session][:email].downcase)
     if libraryuser && libraryuser.authenticate(params[:session][:password])

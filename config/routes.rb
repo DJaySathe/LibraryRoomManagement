@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get '/logout', to: 'sessions#destroy'
 
-  get    '/login_admin',   to: 'sessions#new'
+  get    '/login_admin',   to: 'sessions#adminLogin'
   post   '/login_admin',   to: 'sessions#create_admin'
   delete '/logout_admin',  to: 'sessions#destroy_admin'
   get '/logout_admin', to: 'sessions#destroy_admin'
