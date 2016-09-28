@@ -69,6 +69,6 @@ class LibraryusersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def libraryuser_params
-      params.require(:libraryuser).permit(:name, :email, :password_digest)
+      params.require(:libraryuser).permit(:name, :email, :password, :password_confirmation)
     end
 end

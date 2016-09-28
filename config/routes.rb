@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :libraryusers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  root 'rooms#index'
+  root 'static_pages#home'
   get 'sessions/new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
