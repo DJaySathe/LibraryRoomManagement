@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get '/logout', to: 'sessions#destroy'
-  
+
+  get    '/login_admin',   to: 'sessions#new'
+  post   '/login_admin',   to: 'sessions#create_admin'
+  delete '/logout_admin',  to: 'sessions#destroy_admin'
+  get '/logout_admin', to: 'sessions#destroy_admin'
+
   get 'static_pages/home'
 end
