@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
   	libraryuser = Libraryuser.find_by(email: params[:session][:email].downcase)
-    if libraryuser && libraryuser.authenticate(params[:session][:password_digest])
+    if libraryuser && libraryuser.authenticate(params[:session][:password])
       # Log the libraryuser in and redirect to the libraryuser's show page.
       log_in libraryuser
       redirect_to root_path
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def create_admin
     admin = Admin.find_by(email: params[:session][:email].downcase)
-    if admin && admin.authenticate(params[:session][:password_digest])
+    if admin && admin.authenticate(params[:session][:password])
       # Log the libraryuser in and redirect to the libraryuser's show page.
       log_in_admin admin
       redirect_to root_path
