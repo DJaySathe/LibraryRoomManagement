@@ -1,6 +1,7 @@
 class LibraryusersController < ApplicationController
   before_action :set_libraryuser, only: [:show, :edit, :update, :destroy]
-
+  before_action :authorize_Libraryuser
+  skip_before_action :authorize_Libraryuser , only: [:new, :create]
   # GET /libraryusers
   # GET /libraryusers.json
   def index

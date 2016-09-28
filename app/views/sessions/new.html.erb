@@ -15,7 +15,7 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 	  
       <%= f.submit "Log in", class: "btn btn-primary" %>
-	  <%= flash[:notice] if flash[:notice]%>
+	    <%= flash[:notice] if flash[:notice]%>
       <p>New user? <%= link_to "Sign up now!", new_libraryuser_path %></p>
     <% end %>
 
