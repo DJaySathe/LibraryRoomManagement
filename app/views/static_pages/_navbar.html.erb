@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <%=link_to image_tag("//www.lib.ncsu.edu/sites/all/themes/ncsulib_foundation/images/ncsu-library-logo-white.png", border: 0), {action: 'home', controller: 'static_pages'}, {class: 'dock-item ncsuLibLogoClass'}%>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right classbtnSep">
+        <%= button_to "About Us!", static_pages_aboutus_path,
+                      :class => "btn btn-default navbar-btn btnSep", :method => :get %>
+        <%= button_to "Contact Us!", static_pages_contactus_path,
+                      :class => "btn btn-default navbar-btn btnSep", :method => :get %>
+        <% if admin_logged_in?%>
+            <%= button_to "Logout", login_admin_path,
+                          :class => "btn btn-default navbar-btn btnSep", :method => :get %>
+        <% end %>
+        <% if libraryuser_logged_in?%>
+            <%= button_to "Logout", logout_path,
+                          :class => "btn btn-default navbar-btn btnSep", :method => :get %>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

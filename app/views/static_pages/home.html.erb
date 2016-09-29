@@ -1,13 +1,8 @@
-<<% if !libraryuser_logged_in? &&  !admin_logged_in?%>
+<% if !libraryuser_logged_in? &&  !admin_logged_in?%>
     <div class="center jumbotron">
       <h1>Welcome to Library Room Booking App</h1>
-
-      <br><br>
-
       <%= link_to "Admin Login" , login_admin_path, class: "btn btn-lg btn-default" %>
-    </div>
-    <%= link_to "Library User Login" , login_path, class: "btn btn-lg btn-default" %>
-    </div>
+      <%= link_to "Library User Login" , login_path, class: "btn btn-lg btn-default" %>
       <%= link_to "New to Library => Signup!" , new_libraryuser_path, class: "btn btn-lg btn-default" %>
     </div>
 
@@ -19,7 +14,6 @@
       <h2><%= link_to "Manage Admins", admins_path, class: "btn btn-block btn-default" %></h2>
       <h2><%= link_to "Manage Rooms", rooms_path, class: "btn btn-block btn-default"%></h2>
       <h2><%= link_to "Bookings", bookings_path, class: "btn btn-block btn-default"%></h2>
-      <h2><%= link_to "Logout", logout_admin_path, class: "btn btn-block btn-default"%></h2>
 
     </div>
 <% end %>
@@ -28,7 +22,6 @@
       <h1>Welcome to Library Room Booking System</h1>
       <h2><%= link_to "View Rooms", rooms_path, class: "btn btn-block btn-default"%></h2>
       <h2><%= link_to "Bookings", bookings_path, class: "btn btn-block btn-default"%></h2>
-      <h2><%= link_to "Logout", logout_path, class: "btn btn-block btn-default"%></h2>
 
     </div>
 <% end %>

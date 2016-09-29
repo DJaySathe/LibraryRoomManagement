@@ -1,0 +1,17 @@
+.ncsuLibLogoClass img
+{
+    height: 33px !important;
+    margin-top: 5px !important;
+}
+.navbar-default {
+    background-color: #e60f0f !important;
+}
+.classbtnSep
+{
+    display: flex;
+
+}
+.btnSep
+{
+    margin-left:5px !important;
+}
