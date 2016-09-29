@@ -26,6 +26,7 @@
 <% if libraryuser_logged_in? %>
     <div class="center jumbotron">
       <h1>Welcome to Library Room Booking System</h1>
+      <h2><%= link_to "Edit Profile",  edit_libraryuser_path(current_Libraryuser), class: "btn btn-block btn-default"%></h2>
       <h2><%= link_to "View Rooms", rooms_path, class: "btn btn-block btn-default"%></h2>
       <h2><%= link_to "Bookings", bookings_path, class: "btn btn-block btn-default"%></h2>
       <h2><%= link_to "Logout", logout_path, class: "btn btn-block btn-default"%></h2>
