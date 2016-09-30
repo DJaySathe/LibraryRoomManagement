@@ -1,10 +1,14 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-
+  include SessionsHelper
   # GET /bookings
   # GET /bookings.json
+
   def index
     @bookings = Booking.all
+    if libraryuser_logged_in?
+      @bookings = @bookings.where(libraryuser_id: session[:libraryuser_id])
+    end
   end
 
   # GET /bookings/1
@@ -25,7 +29,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-
+    @booking[:start_time] = @booking[:start_time].change(year:@booking[:date].year, day:@booking[:date].day, month:@booking[:date].month)
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
@@ -40,6 +44,8 @@ class BookingsController < ApplicationController
   # PATCH/PUT /bookings/1
   # PATCH/PUT /bookings/1.json
   def update
+    @booking = Booking.new(booking_params)
+    @booking[:start_time] = @booking[:start_time].change(year:@booking[:date].year, day:@booking[:date].day, month:@booking[:date].month)
     respond_to do |format|
       if @booking.update(booking_params)
         format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
@@ -69,6 +75,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:date, :start_time)
+      params.require(:booking).permit(:date, :start_time ,:libraryuser_id,:room_id)
     end
 end
