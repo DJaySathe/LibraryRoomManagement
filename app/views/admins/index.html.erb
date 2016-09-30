@@ -7,7 +7,6 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
-      <th>Password digest</th>
       <th>Ispreconfigured</th>
       <th colspan="3"></th>
     </tr>
@@ -18,7 +17,6 @@
       <tr>
         <td><%= admin.name %></td>
         <td><%= admin.email %></td>
-        <td><%= admin.password_digest %></td>
         <td><%= admin.ispreconfigured %></td>
         <td><%= link_to 'Show', admin %></td>
         <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
