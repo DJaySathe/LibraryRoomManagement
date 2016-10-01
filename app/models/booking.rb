@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
 	belongs_to :room
 	belongs_to :libraryuser
 	
-	validates :start_time, uniqueness: {scope: [:room_id,:date,:libraryuser_id, message: "Slot is already booked!!"]}
+	validates :start_time, uniqueness: {scope: [:room_id,:date]}
 
 	validates :room_id, :presence=>true
 	validates :date, :presence=>true
