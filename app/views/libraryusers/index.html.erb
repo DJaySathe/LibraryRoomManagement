@@ -18,7 +18,7 @@
         <td><%= libraryuser.email %></td>
         <td><%= link_to 'Show', libraryuser %></td>
         <td><%= link_to 'Edit', edit_libraryuser_path(libraryuser) %></td>
-        <td><%= link_to 'Destroy', libraryuser, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', destroy_libraryuser_path(libraryuser), data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
