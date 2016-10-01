@@ -2,6 +2,7 @@ class LibraryusersController < ApplicationController
   before_action :set_libraryuser, only: [:show, :edit, :update, :destroy]
   before_action :authorize_either
   skip_before_action :authorize_either , only: [:new, :create]
+
   # GET /libraryusers
   # GET /libraryusers.json
   def index
@@ -55,6 +56,13 @@ class LibraryusersController < ApplicationController
   # DELETE /libraryusers/1
   # DELETE /libraryusers/1.json
   def destroy
+    #if there are bookings in the name of deleted libraryuser, those bookings will be deleted
+    @bookings = Booking.all
+    @bookings = @bookings.where(libraryuser_id: @libraryuser.id)
+    for eachBooking in @bookings
+      destroy_booking_path eachBooking
+    end
+
     @libraryuser.destroy
     respond_to do |format|
       format.html { redirect_to libraryusers_url, notice: 'Libraryuser was successfully destroyed.' }

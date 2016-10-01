@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>User ID</th>
       <th>Name</th>
       <th>Email</th>
       <th colspan="3"></th>
@@ -14,10 +15,14 @@
   <tbody>
     <% @libraryusers.each do |libraryuser| %>
       <tr>
+        <td><%= libraryuser.id%></td>
         <td><%= libraryuser.name %></td>
         <td><%= libraryuser.email %></td>
         <td><%= link_to 'Show', libraryuser %></td>
-        <td><%= link_to 'Edit', edit_libraryuser_path(libraryuser) %></td>
+        <% if libraryuser_logged_in? %>
+          <td>Logged</td>
+          <td><%= link_to 'Edit', edit_libraryuser_path(libraryuser) %></td>
+        <%end%>
         <td><%= link_to 'Destroy', destroy_libraryuser_path(libraryuser), data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
