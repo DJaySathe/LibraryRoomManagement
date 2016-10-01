@@ -12,17 +12,18 @@
   <% end %>
 
 
+  <if @room == nil >
 
-  <div class="field">
-    <%= f.label :date %>
-    <%= f.select :date ,options_for_select([[Date.today],[Date.today + 1], [Date.today + 2], [Date.today + 3], [Date.today + 4], [Date.today + 5], [Date.today + 6], [Date.today + 7] ]) %>
-  </div>
-  <div class="field">
-      <%= f.label :"Booking_slot(Booking in 2 hour slots only!)" %>
-      <%= f.select :start_time, options_for_select([["12 AM - 2 AM",DateTime.strptime("7200",'%s')], ["2 AM - 4 AM",DateTime.strptime("14400",'%s')], ["4 AM - 6 AM",DateTime.strptime("21600",'%s')], ["6 AM - 8 AM",DateTime.strptime("28800",'%s')],["8 AM - 10 AM",DateTime.strptime("36000",'%s')], ["10 AM - 12 PM",DateTime.strptime("43200",'%s')], ["12 PM - 2 PM",DateTime.strptime("50400",'%s')], ["2 PM - 4 PM",DateTime.strptime("57600",'%s')], ["4 PM - 6 PM",DateTime.strptime("64800",'%s')], ["6 PM - 8 PM",DateTime.strptime("72000",'%s')], ["8 PM - 10 PM",DateTime.strptime("79200",'%s')], ["10 PM - 12 AM",DateTime.strptime("86400",'%s')]]) %>
-  </div>
-  <% if admin_logged_in? %>
-        <div class="field">
+    <div class="field">
+      <%= f.label :date %>
+      <%= f.select :date ,options_for_select([[Date.today],[Date.today + 1], [Date.today + 2], [Date.today + 3], [Date.today + 4], [Date.today + 5], [Date.today + 6], [Date.today + 7] ]) %>
+    </div>
+    <div class="field">
+        <%= f.label :"Booking_slot(Booking in 2 hour slots only!)" %>
+        <%= f.select :start_time, options_for_select([["12 AM - 2 AM",DateTime.strptime("0",'%s')], ["2 AM - 4 AM",DateTime.strptime("7200",'%s')], ["4 AM - 6 AM",DateTime.strptime("14400",'%s')], ["6 AM - 8 AM",DateTime.strptime("21600",'%s')],["8 AM - 10 AM",DateTime.strptime("28800",'%s')], ["10 AM - 12 PM",DateTime.strptime("36000",'%s')], ["12 PM - 2 PM",DateTime.strptime("43200",'%s')], ["2 PM - 4 PM",DateTime.strptime("50400",'%s')], ["4 PM - 6 PM",DateTime.strptime("57600",'%s')], ["6 PM - 8 PM",DateTime.strptime("64800",'%s')], ["8 PM - 10 PM",DateTime.strptime("72000",'%s')], ["10 PM - 12 AM",DateTime.strptime("79200",'%s')]]) %>
+    </div>
+    <% if admin_logged_in? %>
+          <div class="field">
           <%= f.label :Library_User %>
           <%= f.select :libraryuser_id, options_for_select(Libraryuser.all.collect{ |lu| [ lu.name, lu.id] }) %>
         </div>

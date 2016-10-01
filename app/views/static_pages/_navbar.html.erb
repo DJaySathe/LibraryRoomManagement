@@ -10,12 +10,14 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right classbtnSep">
+        <%= button_to "Home", static_pages_home_path,
+                      :class => "btn btn-default navbar-btn btnSep", :method => :get %>
         <%= button_to "About Us!", static_pages_aboutus_path,
                       :class => "btn btn-default navbar-btn btnSep", :method => :get %>
         <%= button_to "Contact Us!", static_pages_contactus_path,
                       :class => "btn btn-default navbar-btn btnSep", :method => :get %>
         <% if admin_logged_in?%>
-            <%= button_to "Logout", login_admin_path,
+            <%= button_to "Logout", logout_admin_path,
                           :class => "btn btn-default navbar-btn btnSep", :method => :get %>
         <% end %>
         <% if libraryuser_logged_in?%>

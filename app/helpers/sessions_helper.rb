@@ -36,11 +36,13 @@ module SessionsHelper
 
   def log_out
     session.delete(:libraryuser_id)
+    reset_session
     @current_Libraryuser = nil
   end
 
   def log_out_admin
     session.delete(:admin_id)
+    reset_session
     @current_admin = nil
   end
 

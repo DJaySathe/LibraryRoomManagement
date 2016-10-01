@@ -19,5 +19,13 @@ Rails.application.routes.draw do
   delete '/logout_admin',  to: 'sessions#destroy_admin'
   get '/logout_admin', to: 'sessions#destroy_admin'
 
+  get '/destroy_booking/:id', to: 'bookings#destroy', as: 'destroy_booking'
+
+  get '/destroy_libraryuser/:id', to: 'libraryusers#destroy', as: 'destroy_libraryuser'
+
+  get '/destroy_admin/:id', to: 'admins#destroy', as: 'destroy_admin'
+
+   get '/destroy_room/:id', to: 'rooms#destroy', as: 'destroy_room'
+
   get 'static_pages/home'
 end

@@ -20,7 +20,9 @@
         <td><%= admin.ispreconfigured %></td>
         <td><%= link_to 'Show', admin %></td>
         <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
-        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if admin != current_admin && !admin.ispreconfigured %>
+          <td><%= link_to 'Destroy', destroy_admin_path(admin), data: { confirm: 'Are you sure?' } %></td>
+        <% end%>
       </tr>
     <% end %>
   </tbody>
