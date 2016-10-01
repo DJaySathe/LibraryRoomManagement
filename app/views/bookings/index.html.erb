@@ -22,7 +22,9 @@
         <td><%= booking.date %></td>
         <td><%= booking.start_time.hour %>:00</td>
         <td><%= booking.start_time.hour+2 %>:00</td>
-        <td><%= booking.libraryuser_id%></td>
+        <%if admin_logged_in? %>
+          <td><%= link_to booking.libraryuser_id.to_s, 'libraryusers/'+booking.libraryuser_id.to_s%></td>
+        <% end -%>
         <td><%= link_to 'Show', booking %></td>
         <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
         <td><%= link_to 'Cancel booking', destroy_booking_path(booking), data: {confirm: "Are you sure?"} %></td>

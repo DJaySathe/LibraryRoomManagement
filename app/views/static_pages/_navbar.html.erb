@@ -17,7 +17,7 @@
         <%= button_to "Contact Us!", static_pages_contactus_path,
                       :class => "btn btn-default navbar-btn btnSep", :method => :get %>
         <% if admin_logged_in?%>
-            <%= button_to "Logout", login_admin_path,
+            <%= button_to "Logout", logout_admin_path,
                           :class => "btn btn-default navbar-btn btnSep", :method => :get %>
         <% end %>
         <% if libraryuser_logged_in?%>
