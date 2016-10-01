@@ -18,7 +18,7 @@
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= booking.room.roomid %></td>
+        <td><%= booking.room_id %></td>
         <td><%= booking.date %></td>
         <td><%= booking.start_time.hour %>:00</td>
         <td><%= booking.start_time.hour+2 %>:00</td>
