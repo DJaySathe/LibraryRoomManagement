@@ -23,7 +23,9 @@ Rails.application.routes.draw do
 
   get '/destroy_libraryuser/:id', to: 'libraryusers#destroy', as: 'destroy_libraryuser'
 
-  get '/admin/:id', to: 'admins#destroy', as: 'destroy_admin'
+  get '/destroy_admin/:id', to: 'admins#destroy', as: 'destroy_admin'
+
+   get '/destroy_room/:id', to: 'rooms#destroy', as: 'destroy_room'
 
   get 'static_pages/home'
 end
