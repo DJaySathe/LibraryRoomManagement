@@ -1,4 +1,6 @@
 Welcome Library Room Booking App !!!
+
+
 	
 Login Credentials for Super Admin
 
@@ -6,9 +8,14 @@ email: admin@ncsu.edu
 
 password: admin
 
+
+
+
 Application Link:
 
 https://young-reef-94499.herokuapp.com/
+
+
 
 
 Admin Login:
@@ -22,6 +29,8 @@ Admin Login:
 	Add,modify room details and delete.
 5.Make bookings
 	Add booking for a library user. Modify existing booking.
+	
+	
 	
 Library User login:
 1. View rooms
